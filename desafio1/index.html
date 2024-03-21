@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 1</title>
+</head>
+<body>
+    <header>
+        <form action="" id="form">
+            <label for="">Nome:</label>
+            <input type="text" name="nome" placeholder="diigte o nome..." required>
+            <label for="">CPF:</label>
+            <input type="text" name="cpf" placeholder="diigte o CPF..." required>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <button id="nomeOrdem">Classificar por nome</button>
+        <button id="cpfOrdem">Classificar por cpf</button>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+            </tbody>
+        </table>
+    </main>
+
+    
+</body>
+<script>
+    const data = document.getElementById('data');
+    const form = document.getElementById('form');
+    const nomeOrdem = document.getElementById('nomeOrdem');
+    const cpfOrdem = document.getElementById('cpfOrdem');
+
+    form.addEventListener('submit', e => {
+        event.preventDefault();
+
+        const novaData = {
+            nome: form.nome.value,
+            cpf: form.cpf.value
+        };
+        const novoCad = `
+            <tr>
+                <td>${novaData.nome}</td>
+                <td>${novaData.cpf}</td>
+            </tr>
+        `;
+        data.innerHTML += novoCad
+    });
+
+    const nomeOrderFunction = (data) => {
+            if (a.nome < b.nome) {
+                return -1;
+            } else if (a.nome > b.nome) {
+                return 1;
+            } else {
+                return 0;
+            }
+    };
+    const cpfOrderFunction = (data) => {
+            if (a.cpf < b.cpf) {
+                return -1;
+            } else if (a.cpf > b.cpf) {
+                return 1;
+            } else {
+                return 0;
+            }
+    }
+
+    nomeOrdem.addEventListener("click", () => {
+        const nomeData = nomeOrderFunction(data);
+    });
+</script>
+</html>
